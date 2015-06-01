@@ -1,0 +1,22 @@
+{
+  "name": "google-drive-downloader",
+  "version": "0.0.1",
+  "description": "Lists and downloads files from google drive",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "babel": "^5.4.7",
+    "fmerge": "^1.2.0",
+    "googleauth": "^3.0.2",
+    "request": "^2.57.0"
+  },
+  "keywords": [
+    "google",
+    "drive",
+    "download"
+  ],
+  "author": "Benjamin Horsleben",
+  "license": "WTFPL"
+}
