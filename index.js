@@ -1,7 +1,14 @@
 var googleauth = require('googleauth')
 var request = require('request')
 
+var pathToFind = process.argv[2]
+if(!pathToFind) {
+	console.error('Pass path-to-find as first param')
+	process.exit(1)
+}
+
 var get = require('./src/get')
+var findItem = require('./src/find-item')
 
 nodeToPromise(googleauth, {
 	client_id: process.env.GOOGLEAUTH_CLIENT,
@@ -12,11 +19,10 @@ nodeToPromise(googleauth, {
 })
 	.then(authData => {
 		get.config(authData)
-		return get('files')
+		return findItem(pathToFind)
 	})
-	.then(r => {
-		var file = r.items[0]
-		console.log(file, file.parents)
+	.then(file => {
+		console.log(file)
 	})
 	.catch(e => console.error(e.stack || e))
 
