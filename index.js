@@ -4,7 +4,11 @@ var request = require('request')
 var get = require('./src/get')
 
 nodeToPromise(googleauth, {
+	client_id: process.env.GOOGLEAUTH_CLIENT,
+	client_secret: process.env.GOOGLEAUTH_SECRET,
 	scope: 'https://www.googleapis.com/auth/drive',
+	refresh: true,
+	configName: 'update-from-drive'
 })
 	.then(authData => {
 		get.config(authData)
