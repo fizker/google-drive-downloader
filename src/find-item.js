@@ -4,9 +4,8 @@ module.exports = function(path) {
 	var components = path.split('/')
 	return get('files/root')
 		.then(root => components
-			.map(x => x.toLocaleLowerCase())
 			.map(nextName => item=>get(`files?q='${item.id}' in parents`)
-				.then(res => res.items.find(item => item.title.toLocaleLowerCase() == nextName))
+				.then(res => res.items.find(item => item.title == nextName))
 			)
 			.reduce((p, fn) => p.then(fn), Promise.resolve(root))
 		)
