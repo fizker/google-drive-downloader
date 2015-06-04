@@ -1,7 +1,7 @@
 var get = require('./get')
 
 module.exports = function(path) {
-	var components = path.split('/')
+	var components = path.replace(/\/+/g, '/').replace(/^\/|\/$/g, '').split('/')
 	return get('files/root')
 		.then(root => components
 			.map(nextName => item=>get(`files?q='${item.id}' in parents`)

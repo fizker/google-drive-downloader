@@ -1,6 +1,7 @@
 require("babel/register")
 
 var verifyDate = require('./src/verify-date')
+var gdrive = require('./index')
 
 var yargs = require('yargs')
 	.usage('$0 <command>')
@@ -26,5 +27,13 @@ function listChildrenCommand(yargs) {
 		modifiedAfter: verifyDate(args.modifiedAfter),
 	}
 
-	console.log(path, opts)
+	hookUpOutput(gdrive.listChildren(path, opts))
+}
+
+function hookUpOutput(promise) {
+	promise.then(function(result) {
+		console.log(result)
+	}, function(e) {
+		console.error(e)
+	})
 }
