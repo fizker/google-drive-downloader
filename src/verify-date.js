@@ -18,7 +18,7 @@ var currentTimeZone = (function() {
 
 module.exports = function(input) {
 	if(!input) return null
-	var match = input.match(/^(\d{4}-\d{2}-\d{2})(?:T(\d{2}:\d{2}(?::\d{2})?))?(Z|[+-]\d{2}:\d{2})?$/)
+	var match = input.match(/^(\d{4}-\d{2}-\d{2})(?:T(\d{2}:\d{2}(?::\d{2})?))?(?:\.\d+)?(Z|[+-]\d{2}:\d{2})?$/)
 	if(match == null) return null
 
 	var [ _, date, time, timezone ] = match
