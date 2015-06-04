@@ -8,8 +8,8 @@ module.exports = function(path, options) {
 		.then(options.modifiedAfter && (items => items
 			.filter(item => item.modifiedDate > options.modifiedAfter)
 		))
-		.then(children => children.map(child => {
-			var { mimeType, title, modifiedDate } = child
+		.then(files => files.map(file => {
+			var { mimeType, title, modifiedDate } = file
 			var path = title
 			if(mimeType == 'application/vnd.google-apps.folder') {
 				path += '/'

@@ -23,21 +23,22 @@ Usage
 If the program is run without a command or with an invalid command, it will show
 a help-message. This can also be shown by adding `--help`, which will also show
 the available options for individual commands (eg.
-`google-drive-downloader list-children --help`)
+`google-drive-downloader list-files --help`)
 
 
 Available commands
 ------------------
 
-### list-children
+### ls
 
-	... list-children <path> [options...]
+	... ls <path> [options...]
 
-The `path` parameter is the path for which to list children. To list root, run
-`google-drive-downloader list-children /`.
+The `path` parameter is the path for which to list files. To list the files in
+the root folder, run `google-drive-downloader ls /`.
 
 The path-matching is case-sensitive.
 
 #### Available options
 
-- `--modified-after` / `-m`: json date, it will only return matches modified after this date.
+- `--modified-after` / `-m`: json date, it will only return files modified
+    after this date.

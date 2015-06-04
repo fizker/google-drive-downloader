@@ -5,15 +5,15 @@ var gdrive = require('./index')
 
 var yargs = require('yargs')
 	.usage('$0 <command>')
-	.command('list-children', 'List all files within a given folder', listChildrenCommand)
+	.command('ls', 'List all files within a given folder', listFilesCommand)
 	.help('help')
 	.required(1, '')
 
 yargs.argv
 
-function listChildrenCommand(yargs) {
+function listFilesCommand(yargs) {
 	var args = yargs
-		.usage('$0 list-children <path>')
+		.usage('$0 ls <path>')
 		.required(2, 'The path is required. It is case-sensitive. Use `/` for the root.')
 		.option('modified-after', {
 			alias: 'm',
@@ -27,7 +27,7 @@ function listChildrenCommand(yargs) {
 		modifiedAfter: verifyDate(args.modifiedAfter),
 	}
 
-	hookUpOutput(gdrive.listChildren(path, opts))
+	hookUpOutput(gdrive.listFiles(path, opts))
 }
 
 function hookUpOutput(promise) {
