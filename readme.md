@@ -42,3 +42,17 @@ The path-matching is case-sensitive.
 
 - `--modified-after` / `-m`: json date, it will only return files modified
     after this date.
+
+### get-all
+
+	... get-all <path> [options...]
+
+The `path` parameter is the path for which to download files. To download the
+files in the root folder, run `google-drive-downloader ls /`.
+
+#### Available options
+
+- `--modified-after` / `-m`: json date, it will only return files modified
+    after this date.
+- `--output-dir` / `-o`: The folder to download to. The default is the current
+    folder.
