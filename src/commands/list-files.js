@@ -1,13 +1,10 @@
 var get = require('../get')
-var findItem = require('../find-item')
+var findItem = require('../drive/find-item')
+var listFiles = require('../drive/list-files')
 
 module.exports = function(path, options) {
 	return findItem(path)
-		.then(parent => get(`files?q='${parent.id}' in parents&maxResults=1000`))
-		.then(res => res.items)
-		.then(options.modifiedAfter && (items => items
-			.filter(item => item.modifiedDate > options.modifiedAfter)
-		))
+		.then(file => listFiles(file, options))
 		.then(files => files.map(file => {
 			var { mimeType, title, modifiedDate } = file
 			var path = title

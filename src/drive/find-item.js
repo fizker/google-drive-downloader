@@ -1,4 +1,4 @@
-var get = require('./get')
+var get = require('../get')
 
 module.exports = function(path) {
 	var components = path.replace(/\/+/g, '/').replace(/^\/|\/$/g, '').split('/')
