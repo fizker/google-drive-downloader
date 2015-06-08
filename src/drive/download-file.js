@@ -9,12 +9,6 @@ module.exports = function(file, outputFolder) {
 			request(file.downloadUrl)
 				.pipe(fs.createWriteStream(outputFile))
 				.on('error', reject)
-				.on('end', resolve)
-				.on('complete', resolve)
-		}))
-		a.catch(err => new Promise((resolve, reject) => {
-			fs.unlink(outputFile, deleteErr => {
-				reject(err)
-			})
+				.on('close', resolve)
 		}))
 }

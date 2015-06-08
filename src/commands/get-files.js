@@ -11,6 +11,8 @@ module.exports = function(path, options) {
 		.then(x => x[0])
 		.then(files => files.filter(file => file.mimeType != 'application/vnd.google-apps.folder'))
 		.then(files => Promise.all(
-			files.map(file => downloadFile(file, outputDir))
+			files.map(file =>
+				downloadFile(file, outputDir).then(()=>file.title)
+			)
 		))
 }
