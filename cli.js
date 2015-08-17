@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var verifyDate = require('./lib/verify-date')
 var gdrive = require('./lib/commands')
 
