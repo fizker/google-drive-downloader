@@ -1,1 +1,1 @@
-module.exports = require('./src/commands')
+module.exports = require('./lib/commands')
