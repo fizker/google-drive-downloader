@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+require('babel/polyfill')
+
 var verifyDate = require('./lib/verify-date')
 var gdrive = require('./lib/commands')
 
