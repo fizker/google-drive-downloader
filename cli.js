@@ -1,7 +1,7 @@
 require("babel/register")
 
 var verifyDate = require('./src/verify-date')
-var gdrive = require('./index')
+var gdrive = require('./src/commands')
 
 var yargs = require('yargs')
 	.usage('$0 <command>')
