@@ -10,6 +10,23 @@ module.exports = function(path, options) {
 	])
 		.then(x => x[0])
 		.then(files => files.filter(file => file.mimeType != 'application/vnd.google-apps.folder'))
+		.then(files => {
+			let uniqueFiles = {}
+			files.forEach(file => {
+				let previousFile = uniqueFiles[file.title]
+				if(previousFile) {
+					if(!previousFile.hasWarned) {
+						console.error('Multiple files at path ' + file.title)
+					}
+					if(previousFile.modifiedDate > file.modifiedDate) {
+						file = previousFile
+					}
+					file.hasWarned = true
+				}
+				uniqueFiles[file.title] = file
+			})
+			return Object.keys(uniqueFiles).map(key => uniqueFiles[key])
+		})
 		.then(files => Promise.all(
 			files.map(file =>
 				downloadFile(file, outputDir).then(()=>file.title)
