@@ -1,3 +1,5 @@
+'use strict'
+
 var currentTimeZone = (function() {
 	var tz = (new Date().getTimezoneOffset()/60).toString()
 
@@ -21,7 +23,10 @@ module.exports = function(input) {
 	var match = input.match(/^(\d{4}-\d{2}-\d{2})(?:T(\d{2}:\d{2}(?::\d{2})?))?(?:\.\d+)?(Z|[+-]\d{2}:\d{2})?$/)
 	if(match == null) return null
 
-	var [ _, date, time, timezone ] = match
+	//let [ , date, time, timezone ] = match
+	let date = match[1]
+	let time = match[2]
+	let timezone = match[3]
 
 	if(!time) time = '00:00:00'
 	if(time.length == 5) time += ':00'

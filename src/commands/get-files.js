@@ -1,5 +1,11 @@
-var mkdirp = require('mkdirp')
-var { findItem, listFiles, downloadFile } = require('../drive')
+'use strict'
+
+const mkdirp = require('mkdirp')
+//const { findItem, listFiles, downloadFile } = require('../drive')
+const drive = require('../drive')
+const findItem = drive.findItem
+const listFiles = drive.listFiles
+const downloadFile = drive.downloadFile
 
 module.exports = function(path, options) {
 	var outputDir = options.outputDir || process.cwd()

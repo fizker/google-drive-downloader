@@ -1,8 +1,9 @@
-var auth = require('./google-auth')
+const auth = require('./google-auth')
 
-var baseUrl = 'https://www.googleapis.com/drive/v2/'
+const baseUrl = 'https://www.googleapis.com/drive/v2/'
 
-module.exports = function(url, opts = {}) {
+module.exports = function(url, opts/* = {}*/) {
+	if(opts === undefined) opts = {}
 	return auth()
 		.then(request => new Promise((resolve, reject) => {
 			request.get(baseUrl + url, opts, function(err, res) {

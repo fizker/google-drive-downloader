@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 
-require('babel/polyfill')
-
-var verifyDate = require('./lib/verify-date')
-var gdrive = require('./lib/commands')
+var verifyDate = require('./src/verify-date')
+var gdrive = require('./src/commands')
 
 var yargs = require('yargs')
 	.usage('$0 <command>')

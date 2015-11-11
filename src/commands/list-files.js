@@ -1,12 +1,16 @@
-var get = require('../get')
-var findItem = require('../drive/find-item')
-var listFiles = require('../drive/list-files')
+const get = require('../get')
+const findItem = require('../drive/find-item')
+const listFiles = require('../drive/list-files')
 
 module.exports = function(path, options) {
 	return findItem(path)
 		.then(file => listFiles(file, options))
 		.then(files => files.map(file => {
-			var { mimeType, title, modifiedDate } = file
+			//const { mimeType, title, modifiedDate } = file
+			const mimeType = file.mimeType
+			const title = file.title
+			const modifiedDate = file.modifiedDate
+
 			var path = title
 			if(mimeType == 'application/vnd.google-apps.folder') {
 				path += '/'
