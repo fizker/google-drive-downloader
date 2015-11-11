@@ -4,6 +4,17 @@ google-drive-downloader
 Lists and downloads files from google drive. It can easily filter files on date
 and find a specific sub-folder to iterate through.
 
+
+Node 4+ only
+-----------
+
+0.2+ runs on Node 4+ only. It can run on older Node.js through
+[Babel](https://babeljs.io).
+
+As an alternative, install the 0.1 version range. It functions on older versions
+of Node.
+
+
 Auth setup
 ----------
 
