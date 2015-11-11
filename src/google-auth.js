@@ -1,10 +1,15 @@
-var request = require('request')
-var googleauth = require('googleauth')
+'use strict'
+
+const request = require('request')
+const googleauth = require('googleauth')
 
 var cache
 
 module.exports = function() {
-	var { GOOGLEAUTH_CLIENT, GOOGLEAUTH_SECRET } = process.env
+	//const { GOOGLEAUTH_CLIENT, GOOGLEAUTH_SECRET } = process.env
+	let GOOGLEAUTH_CLIENT = process.env.GOOGLEAUTH_CLIENT
+	let GOOGLEAUTH_SECRET = process.env.GOOGLEAUTH_SECRET
+
 	if(!GOOGLEAUTH_CLIENT || !GOOGLEAUTH_SECRET) {
 		return Promise.reject(new Error('GOOGLEAUTH_CLIENT and GOOGLEAUTH_SECRET must be set'))
 	}
