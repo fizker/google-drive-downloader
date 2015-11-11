@@ -59,7 +59,7 @@ function downloadFilesCommand(yargs) {
 
 function hookUpOutput(promise) {
 	promise.then(function(result) {
-		console.log(result)
+		console.log(JSON.stringify(result, null, '  '))
 	}, function(e) {
 		console.error(e)
 	})
