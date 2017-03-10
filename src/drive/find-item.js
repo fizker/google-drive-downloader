@@ -4,8 +4,14 @@ module.exports = function(path) {
 	var components = path.replace(/\/+/g, '/').replace(/^\/|\/$/g, '').split('/')
 	return get('files/root')
 		.then(root => components
-			.map(nextName => item=>get(`files?q='${item.id}' in parents`)
-				.then(res => res.items.find(item => item.title == nextName))
+			.map((nextName, i) => item=>get(`files?q='${item.id}' in parents`)
+				.then(res => {
+					const nextItem = res.items.find(item => item.title == nextName)
+					if(!nextItem) {
+						throw new Error(`${components.slice(0, i + 1).join('/')} not found. Folders on this level: ${res.items.map(x=>x.title).join(', ')}`)
+					}
+					return nextItem
+				})
 			)
 			.reduce((p, fn) => p.then(fn), Promise.resolve(root))
 		)
